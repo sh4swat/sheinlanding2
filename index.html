@@ -273,10 +273,9 @@
     background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
     padding:20px;margin:16px 0;
   }
-  .proof h2{margin:0 0 6px;text-align:center;color:var(--ink);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
-  .ticker-hint { text-align: center; font-size: 11px; color: var(--grey-dark); margin-bottom: 14px; }
+  .proof h2{margin:0 0 14px;text-align:center;color:var(--ink);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
 
-  /* INFINITE TICKER ENGINE */
+  /* INFINITE TICKER ENGINE (CONTINUOUS) */
   .vouch-ticker-viewport {
     height: 340px;
     overflow: hidden;
@@ -285,7 +284,7 @@
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
     user-select: none;
-    cursor: pointer;
+    pointer-events: none; /* Disables all interactions like pausing on touch/click */
   }
   
   .vouch-ticker-track {
@@ -294,7 +293,6 @@
     will-change: transform;
     animation: scrollContinuous 55s linear infinite;
   }
-  .vouch-ticker-track.paused { animation-play-state: paused !important; }
 
   @keyframes scrollContinuous {
     0% { transform: translateY(0); }
@@ -436,7 +434,6 @@
     <!-- PROOF SECTION -->
     <section class="proof" id="proofSection">
       <h2 id="promoSocialHeader">Live Verified Member Payouts</h2>
-      <div class="ticker-hint">💡 Double-tap feed to pause / resume scrolling</div>
       <div id="proofInner">
         <div class="vouch-ticker-viewport" id="vouchViewport">
           <div class="vouch-ticker-track" id="vouchTrack"></div>
@@ -610,7 +607,6 @@
       renderScrollingVouches(formatVouches(rawCpaGripVouches, "$"));
     } finally {
       document.body.classList.add('loaded');
-      initTickerDoubleTapControls();
     }
   }
 
@@ -696,27 +692,6 @@
       </div>
     `).join('');
     track.innerHTML = `<div class="vouch-group">${singleGroupHTML}</div><div class="vouch-group" aria-hidden="true">${singleGroupHTML}</div>`;
-  }
-
-  function initTickerDoubleTapControls() {
-    const viewport = document.getElementById("vouchViewport");
-    const track = document.getElementById("vouchTrack");
-    if(!viewport || !track) return;
-
-    let lastTap = 0;
-    viewport.addEventListener('touchend', function(e) {
-      const currentTime = new Date().getTime();
-      const tapLength = currentTime - lastTap;
-      if (tapLength < 300 && tapLength > 0) {
-        track.classList.toggle('paused');
-        e.preventDefault();
-      }
-      lastTap = currentTime;
-    });
-
-    viewport.addEventListener('dblclick', function() {
-      track.classList.toggle('paused');
-    });
   }
 
   function showGeoModal(badgeText, title, htmlText) {
