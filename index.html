@@ -9,81 +9,57 @@
 
 <style id="themeStyles">
   :root {
-    --bg: #080808;
-    --card: #121212;
+    --bg: #000000;
+    --card: #141414;
     --ink: #ffffff;
     --body: #e5e5e5;
     --line: #222222;
-    --shadow: 0 10px 30px rgba(0,0,0,0.85);
+    --shadow: 0 10px 30px rgba(0,0,0,0.8);
 
-    --accent: #E50914;
+    --accent: #E50914; /* Netflix Red */
     --accent-hover: #b81d24;
     --accent-contrast: #ffffff;
-    --grey-light: #1a1a1a;
+    --grey-light: #1f1f1f;
     --grey-dark: #aaaaaa;
     --border-oval: 6px;
-    --cta-grad: linear-gradient(180deg, #FF003B 0%, #B80024 100%);
+    --cta-grad: linear-gradient(180deg, #E50914 0%, #B81D24 100%);
     
-    --badge-bg: #1a1a1a;
+    --badge-bg: #1f1f1f;
     --badge-text: #ffffff;
-    --toast-bg: #1a1a1a;
+    --toast-bg: #1f1f1f;
     --toast-text: #ffffff;
-    --payout-bg: rgba(255, 0, 59, 0.15);
-    --payout-color: #ff3355;
-    --payout-border: rgba(255, 0, 59, 0.4);
-    --header-bg: #121212;
-    --step-ico-bg: #080808;
+    --payout-bg: rgba(229, 9, 20, 0.15);
+    --payout-color: #ff333d;
+    --payout-border: rgba(229, 9, 20, 0.4);
   }
 
-  /* SHEIN VARIANT A: PINK THEME (US/UK/CA/AU Split) */
-  body.theme-shein-pink {
-    --bg:#fff7fb;
-    --card:#ffffff;
-    --ink:#111111;
-    --body:#444444;
-    --line:#f1e4ef;
-    --shadow:0 10px 28px rgba(0,0,0,.08);
-    --accent:#ffc0cb;
-    --accent-hover:#f8a3b3;
-    --accent-contrast:#a21e4d;
-    --grey-light:#ffe3ea;
-    --grey-dark:#777777;
-    --border-oval:999px;
-    --cta-grad:#ffc0cb;
-    --badge-bg:#ffe3ea;
-    --badge-text:#a21e4d;
-    --payout-bg: rgba(162, 30, 77, 0.1);
-    --payout-color: #a21e4d;
-    --payout-border: rgba(162, 30, 77, 0.25);
-    --header-bg: linear-gradient(180deg,#fff,#ffeef4 70%);
-    --step-ico-bg: #ffe3ea;
-  }
+  /* Shein Specific Theme Overrides (US/UK/AU/CA) */
+  body.theme-shein {
+    --bg: #f8f8f8;
+    --card: #ffffff;
+    --ink: #000000;
+    --body: #1a1a1a;
+    --line: #ededed;
+    --shadow: 0 8px 24px rgba(0,0,0,0.06);
 
-  /* SHEIN VARIANT B: BLACK & RED THEME (US/UK/CA/AU Split) */
-  body.theme-shein-black {
-    --bg: #0a0a0c;
-    --card: #141418;
-    --ink: #ffffff;
-    --body: #e0e0e6;
-    --line: #262630;
-    --shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-    --accent: #FF003B;
-    --accent-hover: #d60031;
+    --accent: #000000;
+    --accent-hover: #222222;
     --accent-contrast: #ffffff;
-    --grey-light: #1d1d26;
-    --grey-dark: #a0a0b0;
-    --border-oval: 8px;
-    --cta-grad: linear-gradient(135deg, #FF003B 0%, #B30024 100%);
-    --badge-bg: #1d1d26;
+    --grey-light: #f4f4f4;
+    --grey-dark: #444444;
+    --border-oval: 50px;
+    --cta-grad: #000000;
+    
+    --badge-bg: #000000;
     --badge-text: #ffffff;
-    --payout-bg: rgba(255, 0, 59, 0.18);
-    --payout-color: #ff335a;
-    --payout-border: rgba(255, 0, 59, 0.45);
-    --header-bg: linear-gradient(180deg, #181820 0%, #101015 100%);
-    --step-ico-bg: #0a0a0c;
+    --toast-bg: #000000;
+    --toast-text: #ffffff;
+    --payout-bg: rgba(0, 200, 83, 0.12);
+    --payout-color: #00a843;
+    --payout-border: rgba(0, 200, 83, 0.25);
   }
 
-  /* TESTSTAR CPI THEME (EU/Nordics) */
+  /* Teststar CPI Theme Overrides (EU/Nordics) */
   body.theme-teststar {
     --bg: #0b071e;
     --card: #150d36;
@@ -91,6 +67,7 @@
     --body: #e4e0ff;
     --line: #2a1b63;
     --shadow: 0 10px 30px rgba(127, 81, 255, 0.22);
+
     --accent: #7f51ff;
     --accent-hover: #6934ff;
     --accent-contrast: #ffffff;
@@ -98,13 +75,14 @@
     --grey-dark: #b8acff;
     --border-oval: 50px;
     --cta-grad: linear-gradient(90deg, #7f51ff 0%, #9b72ff 100%);
+    
     --badge-bg: #1f144d;
     --badge-text: #ffffff;
+    --toast-bg: #1f144d;
+    --toast-text: #ffffff;
     --payout-bg: rgba(0, 230, 118, 0.15);
     --payout-color: #00e676;
     --payout-border: rgba(0, 230, 118, 0.3);
-    --header-bg: #150d36;
-    --step-ico-bg: #130a30;
   }
 
   *{box-sizing:border-box}
@@ -115,14 +93,14 @@
     background:var(--bg); color:var(--body); line-height:1.5;
     -webkit-font-smoothing: antialiased;
     opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.2s ease, color 0.2s ease;
+    transition: opacity 0.3s ease;
   }
   body.loaded { opacity: 1; }
   .wrap{max-width:550px;margin:0 auto;padding:16px}
 
   /* HEADER / HERO */
   header{
-    background: var(--header-bg);
+    background: var(--card);
     border: 1px solid var(--line);
     border-radius: 16px;
     box-shadow: var(--shadow);
@@ -158,57 +136,45 @@
     box-shadow:var(--shadow);
     padding:20px;
     display:grid;
-    grid-template-columns:84px 1fr;
+    grid-template-columns:70px 1fr;
     gap:16px; align-items:center;
     margin:16px 0;
     opacity:0; transform:translateY(12px);
   }
   .offer.reveal{ opacity:1; transform:translateY(0); transition:opacity .45s ease, transform .45s ease; }
 
-  /* LOGO CONTAINER & OG SHEIN LOGO STYLING */
+  /* LOGO CONTAINER */
   .logo-container {
-    width:84px;
-    height:84px;
-    border-radius:14px;
-    background: #000000;
+    width:70px;
+    height:70px;
+    border-radius:12px;
+    background: linear-gradient(135deg, #E50914 0%, #8C060D 100%);
     color:#ffffff;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    gap: 2px;
+    font-weight:800;
+    font-size:10px;
+    letter-spacing:0.8px;
     border:1px solid var(--line);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 16px rgba(229, 9, 20, 0.4);
     text-align: center;
-    overflow: hidden;
-    padding: 6px;
   }
-
-  body.theme-shein-pink .logo-container {
-    background: #ffffff;
-    color: #000000;
-    border: 1px solid #f1e4ef;
-    box-shadow: 0 4px 14px rgba(255, 192, 203, 0.25);
-  }
-
-  body.theme-shein-black .logo-container {
+  body.theme-shein .logo-container {
     background: #000000;
-    border: 1px solid #FF003B;
-    box-shadow: 0 0 18px rgba(255, 0, 59, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 12px;
   }
-
   body.theme-teststar .logo-container {
     background: linear-gradient(135deg, #7f51ff 0%, #4f22e2 100%);
     border-radius: 18px;
     box-shadow: 0 4px 16px rgba(127, 81, 255, 0.4);
     font-size: 10px;
-    font-weight: 800;
   }
-
-  .shein-og-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  .logo-container svg { width: 28px; height: 28px; fill: #ffffff; }
 
   .title{margin:0;color:var(--ink);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
   .blurb{margin:6px 0 0;font-size:14px;font-weight:500;color:var(--body)}
@@ -230,9 +196,9 @@
   .cta:active{transform:scale(0.98) !important;}
   
   @keyframes premiumCTAForce {
-    0% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 0, 59, 0.25); }
-    50% { transform: scale(1.03); box-shadow: 0 12px 26px rgba(255, 0, 59, 0.55); }
-    100% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 0, 59, 0.25); }
+    0% { transform: scale(1); box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3); }
+    50% { transform: scale(1.03); box-shadow: 0 12px 24px rgba(229, 9, 20, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3); }
   }
 
   /* HOW IT WORKS */
@@ -242,8 +208,10 @@
   }
   .how h2{margin:0 0 16px;text-align:center;color:var(--ink);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
   .steps{display:grid;gap:12px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start}
-  .ico{flex:0 0 auto;width:32px;height:32px;border-radius:8px;background:var(--step-ico-bg);border:1px solid var(--line);display:grid;place-items:center;font-size:14px}
+  .step{background:var(--grey-light);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start}
+  .ico{flex:0 0 auto;width:32px;height:32px;border-radius:8px;background:#000000;border:1px solid var(--line);display:grid;place-items:center;font-size:14px}
+  body.theme-shein .ico { background: #ffffff; border-radius: 10px; }
+  body.theme-teststar .ico { background: #130a30; border-radius: 10px; }
   .step h3{margin:0 0 4px;font-size:14px;color:var(--ink);font-weight:700}
   .step p{margin:0;font-size:13px;color:var(--grey-dark)}
 
@@ -263,8 +231,19 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .value-grid { display: flex; flex-direction: column; gap: 6px; }
-  .value-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--body); padding-bottom: 4px; border-bottom: 1px dashed var(--line); }
+  .value-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .value-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--body);
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--line);
+  }
   .value-row:last-child { border-bottom: none; padding-bottom: 0; }
   .value-row strong { color: var(--payout-color); font-weight: 700; }
 
@@ -273,9 +252,10 @@
     background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
     padding:20px;margin:16px 0;
   }
-  .proof h2{margin:0 0 14px;text-align:center;color:var(--ink);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
+  .proof h2{margin:0 0 6px;text-align:center;color:var(--ink);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.3px}
+  .ticker-hint { text-align: center; font-size: 11px; color: var(--grey-dark); margin-bottom: 14px; }
 
-  /* INFINITE TICKER ENGINE (CONTINUOUS) */
+  /* INFINITE TICKER ENGINE */
   .vouch-ticker-viewport {
     height: 340px;
     overflow: hidden;
@@ -284,7 +264,7 @@
     mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
     user-select: none;
-    pointer-events: none; /* Disables all interactions like pausing on touch/click */
+    cursor: pointer;
   }
   
   .vouch-ticker-track {
@@ -292,6 +272,9 @@
     flex-direction: column;
     will-change: transform;
     animation: scrollContinuous 55s linear infinite;
+  }
+  .vouch-ticker-track.paused {
+    animation-play-state: paused !important;
   }
 
   @keyframes scrollContinuous {
@@ -310,7 +293,7 @@
   }
   .vouch-text { font-size: 13px; color: var(--body) !important; margin: 0 0 8px; line-height: 1.4; }
   .vouch-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
-  .vouch-tag { font-weight: 600; color: var(--payout-color); display: inline-flex; align-items: center; gap: 4px; }
+  .vouch-tag { font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
   .vouch-time { font-weight: 600; color: var(--grey-dark); opacity: 0.85; }
 
   /* FAQ */
@@ -319,7 +302,7 @@
   details{background:var(--grey-light);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
   summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--ink);position:relative;padding-right:20px;list-style:none}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:'+';position:absolute;right:6px;top:0;font-weight:700;font-size:16px;color:var(--payout-color)}
+  summary::after{content:'+';position:absolute;right:6px;top:0;font-weight:700;font-size:16px;color:var(--accent)}
   details[open] summary::after{content:'−'}
   
   .details-content {margin-top: 10px;border-top: 1px solid var(--line);padding-top: 10px}
@@ -332,32 +315,32 @@
   /* MODAL */
   .modal-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(6px);
     z-index: 1000; display: flex; align-items: center; justify-content: center;
     padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
   }
   .modal-overlay.show { opacity: 1; pointer-events: auto; }
   .modal {
-    background: #141418; border: 1px solid var(--line); border-radius: 16px;
+    background: #141414; border: 1px solid var(--line); border-radius: 16px;
     padding: 28px 20px; max-width: 420px; width: 100%; text-align: center;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.85); transform: scale(0.9); transition: transform 0.3s ease;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.8); transform: scale(0.9); transition: transform 0.3s ease;
   }
-  body.theme-shein-pink .modal { background: #ffffff; border-color: #f1e4ef; }
+  body.theme-shein .modal { background: #ffffff; border-color: #ededed; }
   body.theme-teststar .modal { background: #150d36; border-color: #2a1b63; }
   .modal-overlay.show .modal { transform: scale(1); }
   .modal-badge {
-    display: inline-block; background: rgba(255, 0, 59, 0.2); color: #ff335a;
-    border: 1px solid rgba(255, 0, 59, 0.4); font-size: 11px; font-weight: 800;
+    display: inline-block; background: rgba(229, 9, 20, 0.2); color: #ff333d;
+    border: 1px solid rgba(229, 9, 20, 0.4); font-size: 11px; font-weight: 800;
     padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
   }
   body.theme-teststar .modal-badge { background: rgba(127, 81, 255, 0.2); color: #9b72ff; border-color: rgba(127, 81, 255, 0.4); }
   .modal-title { color: #ffffff; font-size: 19px; font-weight: 800; text-transform: uppercase; margin: 0 0 12px; }
-  body.theme-shein-pink .modal-title { color: #000000; }
+  body.theme-shein .modal-title { color: #000000; }
   .modal-text { font-size: 14px; color: #cccccc; line-height: 1.5; margin-bottom: 22px; text-align: left; }
-  body.theme-shein-pink .modal-text { color: #333333; }
-  body.theme-shein-pink .modal-text strong { color: #000000; }
+  body.theme-shein .modal-text { color: #333333; }
+  body.theme-shein .modal-text strong { color: #000000; }
   .modal-btn {
-    display: inline-block; width: 100%; padding: 15px; background: var(--accent); color: var(--accent-contrast);
+    display: inline-block; width: 100%; padding: 15px; background: var(--accent); color: #ffffff;
     border: none; border-radius: var(--border-oval); font-size: 14px; font-weight: 800; text-transform: uppercase; cursor: pointer;
   }
 </style>
@@ -384,7 +367,8 @@
     <!-- MAIN OFFER BLOCK -->
     <section class="offer" id="mainOffer">
       <div class="logo-container" id="promoLogo">
-        <!-- SVG OG SHEIN LOGO RENDERED VIA JS DEPENDING ON VARIANT -->
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+        <span>DEALS</span>
       </div>
       <div>
         <p class="title" id="promoTitle">Deals Reward Hub</p>
@@ -434,6 +418,7 @@
     <!-- PROOF SECTION -->
     <section class="proof" id="proofSection">
       <h2 id="promoSocialHeader">Live Verified Member Payouts</h2>
+      <div class="ticker-hint">💡 Double-tap feed to pause / resume scrolling</div>
       <div id="proofInner">
         <div class="vouch-ticker-viewport" id="vouchViewport">
           <div class="vouch-ticker-track" id="vouchTrack"></div>
@@ -488,14 +473,13 @@
     </section>
 
     <div class="rating" id="ratingText">⭐️ 4.9/5 • 24,180 members unlocked payouts this week</div>
-    <p class="foot">©2026 shndeals.com</p>
+    <p class="foot">©2026 shnoffers.com</p>
   </div>
 
 <script>
   /* --- TARGET OFFER LINKS --- */
-  const SHEIN_PINK_LINK = "https://giftclick.org/aff_c?offer_id=1229&aff_id=198291&source=pinklander";
-  const SHEIN_BLACK_LINK = "https://giftclick.org/aff_c?offer_id=1229&aff_id=198291&source=blacklander";
-  const LINK_TESTSTAR_CPI = "https://taprkr.com/r/eyJ0IjoidGVzdHN0YXIiLCJ0aWQiOiIwY2NmODNkMDllMzYwNjUxMTJmNiIsInRzIjoxNzg5MzQxNjgyOTEzfQ";
+  const LINK_SHEIN = "https://giftclick.org/aff_c?offer_id=1300&aff_id=198291"; 
+  const LINK_TESTSTAR_CPI = "https://taprkr.com/r/eyJ0IjoidGVzdHN0YXIiLCJ0aWQiOiIwY2NmODNkMDllMzYwNjUxMTJmNiIsInRzIjoxNzg1MzQxNjgyOTEzfQ";
   const LINK_CPAGRIP_SMARTLINK = "https://playabledownloads.com/1906946"; 
 
   /* --- TARGET GEO GROUPS --- */
@@ -505,22 +489,7 @@
   const POUND_COUNTRIES = ["GB", "UK"];
 
   let targetAffiliateLink = LINK_CPAGRIP_SMARTLINK;
-  let currencySym = "$";
-
-  /* OFFICIAL OG SHEIN SVG LOGO GENERATOR */
-  function getOgSheinSvg(fillColor = "#FFFFFF") {
-    return `
-      <svg class="shein-og-svg" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="45" 
-              text-anchor="middle" 
-              fill="${fillColor}" 
-              font-family="'Poppins', 'Arial Black', sans-serif" 
-              font-size="44" 
-              font-weight="900" 
-              letter-spacing="5">SHEIN</text>
-      </svg>
-    `;
-  }
+  let currencySym = "$"; // Default currency
 
   function getCurrencySymbol(countryCode) {
     if (POUND_COUNTRIES.includes(countryCode)) return "£";
@@ -557,27 +526,16 @@
       const data = await response.json();
       const countryCode = data && data.country_code ? data.country_code.toUpperCase() : "US";
 
+      // Detect & set localized currency symbol (£, €, or $)
       currencySym = getCurrencySymbol(countryCode);
 
-      // 1) SHEIN TARGET GEOS (US, UK/GB, CA, AU) -> 50/50 SPLIT TEST
+      // 1) Target Shein Countries (US, GB/UK, AU, CA)
       if (SHEIN_COUNTRIES.includes(countryCode)) {
-        let assignedVariant = localStorage.getItem('shn_shein_variant');
-        if (!assignedVariant) {
-          assignedVariant = Math.random() < 0.5 ? 'pink' : 'black';
-          localStorage.setItem('shn_shein_variant', assignedVariant);
-        }
-
-        if (assignedVariant === 'pink') {
-          targetAffiliateLink = SHEIN_PINK_LINK;
-          applySheinLayoutEngine(currencySym, 'theme-shein-pink', "#000000");
-        } else {
-          targetAffiliateLink = SHEIN_BLACK_LINK;
-          applySheinLayoutEngine(currencySym, 'theme-shein-black', "#FFFFFF");
-        }
-
+        targetAffiliateLink = LINK_SHEIN;
+        applySheinLayoutEngine(currencySym);
         renderScrollingVouches(formatVouches(rawSheinVouches, currencySym));
       } 
-      // 2) EUROPE GEOS -> TESTSTAR CPI LANDER
+      // 2) Target Teststar Countries (FR, BE, NL, SE, DK, FI, LU, IS, NO, IE)
       else if (TESTSTAR_COUNTRIES.includes(countryCode)) {
         targetAffiliateLink = LINK_TESTSTAR_CPI;
         applyTeststarLayoutEngine(currencySym);
@@ -589,7 +547,7 @@
           `SHEIN promotional deals are currently unavailable in your country.<br><br>However, you can complete quick mobile app trials, play games, and enter your email to claim direct cash rewards to your PayPal account! 💸`
         );
       } 
-      // 3) ALL OTHER GEOS (REST OF WORLD) -> CPAGRIP SMARTLINK
+      // 3) ALL OTHER COUNTRIES (ROW) -> CPAGRIP SMARTLINK
       else {
         targetAffiliateLink = LINK_CPAGRIP_SMARTLINK;
         applyCpaGripLayoutEngine(currencySym);
@@ -602,23 +560,25 @@
         );
       }
     } catch (error) {
+      // Fallback on error
       targetAffiliateLink = LINK_CPAGRIP_SMARTLINK;
       applyCpaGripLayoutEngine("$");
       renderScrollingVouches(formatVouches(rawCpaGripVouches, "$"));
     } finally {
       document.body.classList.add('loaded');
+      initTickerDoubleTapControls();
     }
   }
 
-  /* SHEIN LAYOUT ENGINE WITH OG BRAND SVG LOGO */
-  function applySheinLayoutEngine(sym, themeClass, logoFillColor) {
-    document.body.classList.add(themeClass);
+  /* SHEIN LAYOUT ENGINE */
+  function applySheinLayoutEngine(sym) {
+    document.body.classList.add('theme-shein');
     document.title = `Claim Your Shein Gift Card Below (${sym})`;
 
     document.getElementById("promoHeader").textContent = "Claim Your Shein Gift Card Below 👇🏻";
 
     const logo = document.getElementById("promoLogo");
-    logo.innerHTML = getOgSheinSvg(logoFillColor);
+    logo.innerHTML = `SHEIN`;
 
     document.getElementById("promoTitle").textContent = "Shein Gift Card";
     document.getElementById("promoBlurb").textContent = "Enter your email, Complete quick deals & Earn giftcard!";
@@ -626,15 +586,15 @@
 
     document.getElementById("howItWorksHeader").textContent = "How it works";
     document.getElementById("stepsContainer").innerHTML = `
-      <div class="step"><div class="ico">✉️</div><div><h3>1. Sign up with your email</h3><p>Create your account so we can track your progress and deliver your code.</p></div></div>
+      <div class="step"><div class="ico">✉️</div><div><h3>1. Sign up with your email</h3><p>Create your account so we can track your progress and deliver your rewards.</p></div></div>
       <div class="step"><div class="ico">📝</div><div><h3>2. Complete quick deals</h3><p>Finish simple partner offers (surveys, app installs, or casual tasks) to qualify.</p></div></div>
       <div class="step"><div class="ico">🎁</div><div><h3>3. Get your reward</h3><p>Once verified, your code is processed. Done and dusted!</p></div></div>
     `;
 
     updateTierLabels(sym);
     document.getElementById("faqTierText").textContent = `Completing 2 deals triggers base rewards (${sym}80), while completing up to 25 deals triggers our highest tier (${sym}1,000).`;
-    document.getElementById("promoSocialHeader").textContent = "Real customers vouch";
-    document.getElementById("ratingText").textContent = "⭐️ 4.8/5 • 12,847 people claimed rewards this week";
+    document.getElementById("promoSocialHeader").textContent = "Live Verified Rewards";
+    document.getElementById("ratingText").textContent = "⭐️ 4.9/5 • 18,410 people claimed rewards this week";
   }
 
   /* TESTSTAR CPI LAYOUT ENGINE */
@@ -646,7 +606,7 @@
 
     const logo = document.getElementById("promoLogo");
     logo.innerHTML = `
-      <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:#ffffff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <span>TESTSTAR</span>
     `;
 
@@ -669,8 +629,6 @@
 
   /* CPAGRIP SMARTLINK LAYOUT ENGINE */
   function applyCpaGripLayoutEngine(sym) {
-    const logo = document.getElementById("promoLogo");
-    logo.innerHTML = getOgSheinSvg("#FFFFFF");
     updateTierLabels(sym);
     document.getElementById("faqTierText").textContent = `Completing 2 deals triggers base rewards (${sym}80), while completing up to 25 deals triggers our highest tier (${sym}1,000).`;
   }
@@ -692,6 +650,28 @@
       </div>
     `).join('');
     track.innerHTML = `<div class="vouch-group">${singleGroupHTML}</div><div class="vouch-group" aria-hidden="true">${singleGroupHTML}</div>`;
+  }
+
+  /* DOUBLE TAP TO PAUSE / UNPAUSE TICKER (Prevents accidental touch-stopping while scrolling) */
+  function initTickerDoubleTapControls() {
+    const viewport = document.getElementById("vouchViewport");
+    const track = document.getElementById("vouchTrack");
+    if(!viewport || !track) return;
+
+    let lastTap = 0;
+    viewport.addEventListener('touchend', function(e) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      if (tapLength < 300 && tapLength > 0) {
+        track.classList.toggle('paused');
+        e.preventDefault();
+      }
+      lastTap = currentTime;
+    });
+
+    viewport.addEventListener('dblclick', function() {
+      track.classList.toggle('paused');
+    });
   }
 
   function showGeoModal(badgeText, title, htmlText) {
